@@ -1,0 +1,48 @@
+// 문제 : diameter-of-binary-tree
+// 결과 : Accepted / 속도: 40ms / 메모리 : 18.60MB
+// 제출시각 : 24-01-13  4:26:31
+from collections import deque
+
+
+
+class Solution:
+
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
+
+        self.max_diameter = 0
+
+
+
+        def dfs(node):
+
+            if not node:
+
+                return 0 # 맨아래노드의 기준을 0으로 세움 
+
+            
+
+            left_depth=dfs(node.left) #현재 노드의 왼쪽
+
+            right_depth=dfs(node.right)#현재 노드의 오른쪽
+
+
+
+            depth=max(left_depth,right_depth)+1 #둘중 더 깊 은것이 깊이 
+
+            self.max_diameter=max(self.max_diameter,left_depth+right_depth) #부모 노드에 올려주어야하기 때문에
+
+
+
+            return depth #깊이를 통해 탐색
+
+
+
+        dfs(root)
+
+        return self.max_diameter
+
+
+
+
+
+
