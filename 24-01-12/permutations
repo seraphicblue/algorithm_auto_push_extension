@@ -1,0 +1,50 @@
+// 문제 : permutations
+// 결과 : Accepted / 속도: 46ms / 메모리 : 17.80MB
+// 제출시각 : 24-01-12  20:19:25
+from typing import List
+
+
+
+class Solution:
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
+
+        results = []
+
+
+
+        def backtrack(start=0):
+
+            if start == len(nums): #list의 갯수 만큼 pick 하기
+
+                results.append(nums[:])
+
+                return
+
+
+
+            for i in range(start, len(nums)):
+
+                # Swap the current element with the start element
+
+                nums[start], nums[i] = nums[i], nums[start]
+
+                print(start,i)
+
+                # Continue with the next element
+
+                backtrack(start + 1)
+
+
+
+                # Backtrack to swap the elements back to the original order
+
+                nums[start], nums[i] = nums[i], nums[start]
+
+
+
+        backtrack()
+
+        return results
+
+
