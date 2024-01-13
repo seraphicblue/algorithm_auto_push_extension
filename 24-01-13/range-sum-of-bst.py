@@ -1,6 +1,6 @@
 # 문제 : range-sum-of-bst
-# 결과 : Accepted / 속도: 115ms / 메모리 : 24.51MB
-# 제출시각 : 24-01-13  17:25:43
+# 결과 : Accepted / 속도: 112ms / 메모리 : 24.49MB
+# 제출시각 : 24-01-13  17:35:45
 # Definition for a binary tree node.
 
 # class TreeNode:
@@ -33,7 +33,9 @@ class Solution:
 
         if low<root.val : #low보다 왼쪽을 탐색
 
-            sum += self.rangeSumBST(root.left, low ,high) #root의 왼쪽 검사 low과 root val이 같아질때까지
+            sum += self.rangeSumBST(root.left, low ,high) 
+
+            #왼쪽 서브트리에서 low 이상의 값을 가진 노드를 찾기 위해 탐색 
 
         
 
@@ -41,9 +43,7 @@ class Solution:
 
             sum += self.rangeSumBST(root.right, low ,high) 
 
-            #root의 오른쪽 검사 high과 root val이 같아질때까지
-
-
+            #오른쪽 서브트리에서 high이하의 값을 가진 노드를 찾기 위해 탐색 
 
         return sum
 
